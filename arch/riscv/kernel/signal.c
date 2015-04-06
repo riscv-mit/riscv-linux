@@ -118,6 +118,12 @@ static int setup_rt_frame(struct ksignal *ksig, sigset_t *set,
 	regs->ra = (unsigned long)VDSO_SYMBOL(
 		current->mm->context.vdso, rt_sigreturn);
 
+  /* Bless the tag of the new value of regs->ra. */
+  __asm__ __volatile__ ("settag %0, 1"
+    : "=r"(regs->ra)
+    : "r"(mem)
+  );
+
 	/*
 	 * Set up registers for signal handler.
 	 * Registers that we don't modify keep the value they had from
