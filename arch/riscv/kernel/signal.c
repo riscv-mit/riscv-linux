@@ -121,7 +121,7 @@ static int setup_rt_frame(struct ksignal *ksig, sigset_t *set,
   /* Bless the tag of the new value of regs->ra. */
   __asm__ __volatile__ ("settag %0, 1"
     : "=r"(regs->ra)
-    : "r"(mem)
+    : "r"(regs->ra)
   );
 
 	/*
