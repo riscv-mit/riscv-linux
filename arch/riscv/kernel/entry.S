@@ -287,6 +287,8 @@ ENTRY(excp_vect_table)
 	PTR do_trap_store_misaligned
 	PTR do_page_fault
 	PTR do_page_fault
+	PTR do_trap_unknown /* accelerator_disabled */
+	PTR do_trap_tag_violation /* tag_violation */
 excp_vect_table_end:
 END(excp_vect_table)
 

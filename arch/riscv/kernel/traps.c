@@ -106,6 +106,9 @@ DO_ERROR_INFO(do_trap_load_misaligned,
 	SIGBUS, BUS_ADRALN, GET_BADVADDR, "load address misaligned");
 DO_ERROR_INFO(do_trap_store_misaligned,
 	SIGBUS, BUS_ADRALN, GET_BADVADDR, "store address misaligned");
+/* Trap for tag violations. Error code could reflect policy violation. */
+DO_ERROR_INFO(do_trap_tag_violation,
+	SIGUSR2, 0x7A7C, GET_BADVADDR, "tag policy violation");
 
 asmlinkage void do_trap_break(struct pt_regs *regs)
 {
